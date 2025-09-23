@@ -1,0 +1,9 @@
+<?php
+$nim="E42240628";
+$nama="fauzan irfanto";
+$prodi="Bisnis Digital";
+echo "selamat mengoding kawan-kawan";
+echo $nim;E42240628
+echo $nama;fauzan irfanto
+echo $prodi;Bisnis Digital
+?>
