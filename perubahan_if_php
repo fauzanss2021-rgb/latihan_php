@@ -1,0 +1,104 @@
+<?php
+// acara8.php
+echo "<h2>Contoh Percabangan / Logika PHP</h2>";
+
+// Form Pilihan
+echo '
+<form method="post">
+    <label>Pilih Kasus:</label><br>
+    <select name="kasus">
+        <option value="1">1. Login Sederhana</option>
+        <option value="2">2. Penentuan Grade Nilai</option>
+        <option value="3">3. Pemilihan Menu (Switch)</option>
+        <option value="4">4. Perulangan dengan Break</option>
+        <option value="5">5. Perulangan dengan Continue</option>
+    </select><br><br>
+
+    <!-- Input untuk kasus login -->
+    Username: <input type="text" name="username"><br>
+    Password: <input type="password" name="password"><br><br>
+
+    <!-- Input untuk kasus nilai -->
+    Nilai: <input type="number" name="nilai"><br><br>
+
+    <!-- Input untuk kasus menu -->
+    Pilih Menu (1-3): <input type="number" name="menu"><br><br>
+
+    <input type="submit" value="Jalankan">
+</form>
+<hr>
+';
+
+// Proses logika
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $kasus = $_POST['kasus'];
+
+    switch($kasus) {
+        case 1:
+            echo "<h3>Kasus 1: Login Sederhana</h3>";
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            if($username == "admin" && $password == "12345") {
+                echo "Login berhasil, selamat datang $username!";
+            } else {
+                echo "Login gagal, username atau password salah!";
+            }
+            break;
+
+        case 2:
+            echo "<h3>Kasus 2: Penentuan Grade Nilai</h3>";
+            $nilai = $_POST['nilai'];
+
+            if($nilai >= 90) {
+                echo "Grade: A";
+            } elseif($nilai >= 80) {
+                echo "Grade: B";
+            } elseif($nilai >= 70) {
+                echo "Grade: C";
+            } else {
+                echo "Grade: D";
+            }
+            break;
+
+        case 3:
+            echo "<h3>Kasus 3: Pemilihan Menu (Switch)</h3>";
+            $menu = $_POST['menu'];
+
+            switch($menu) {
+                case 1:
+                    echo "Anda memilih Nasi Goreng";
+                    break;
+                case 2:
+                    echo "Anda memilih Mie Ayam";
+                    break;
+                case 3:
+                    echo "Anda memilih Ayam Geprek";
+                    break;
+                default:
+                    echo "Menu tidak tersedia";
+            }
+            break;
+
+        case 4:
+            echo "<h3>Kasus 4: Perulangan dengan Break</h3>";
+            for($i = 1; $i <= 10; $i++) {
+                if($i == 5) {
+                    break; // berhenti di angka 5
+                }
+                echo "Angka ke-$i <br>";
+            }
+            break;
+
+        case 5:
+            echo "<h3>Kasus 5: Perulangan dengan Continue</h3>";
+            for($i = 1; $i <= 10; $i++) {
+                if($i == 5) {
+                    continue; // lewati angka 5
+                }
+                echo "Angka ke-$i <br>";
+            }
+            break;
+    }
+}
+?>
